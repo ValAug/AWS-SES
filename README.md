@@ -6,7 +6,7 @@ This repository create an __AWS:__
  - __SES domain verification with R53__
 
 # AWS VPC-e Gateway diagram 
-![Gateway](https://github.com/ValAug/vpc-endpoint-connection-with-s3/blob/main/vpc_endpoint_diagram/vpc-e.png)
+![ses-r53](https://github.com/ValAug/AWS-SES/blob/main/ses-2.png)
 ###### Cloud - :cloud:
 ![AWS](https://img.shields.io/badge/-AWS-000000?style=flat&logo=Amazon%20AWS&logoColor=FF9900)
 
@@ -55,7 +55,7 @@ terraform destroy --auto-approve
 ## Steps to follow
 
 - clone this GitHub repository
-- cd to the the directory __vpc-endpoint-connection-with-s3__
+- cd to the the directory __SES domain verification with R53__
 
 - __Terraform-commands:__
     - __terraform --help__
