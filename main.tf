@@ -11,16 +11,16 @@ resource "aws_ses_domain_mail_from" "main" {
     mail_from_domain = "mail.${var.domain}"
 }
 
-data "aws_route53_zone" "arms_zone" {
+data "aws_route53_zone" "zone" {
 
     name         = var.zone_name
     private_zone = false
 
 }
 
-resource "aws_route53_record" "arms_ses_verification_record" {
+resource "aws_route53_record" "ses_verification_record" {
   
-    zone_id = data.aws_route53_zone.arms_zone.zone_id
+    zone_id = data.aws_route53_zone.zone.zone_id
     name    = var.domain
     type    = "TXT"
     ttl     = "600"
@@ -35,7 +35,7 @@ resource "aws_ses_domain_dkim" "ses_domain_dkim" {
 resource "aws_route53_record" "amazonses_dkim_record" {
   
     count   = 3
-    zone_id = data.aws_route53_zone.arms_zone.zone_id
+    zone_id = data.aws_route53_zone.zone.zone_id
     name    = "${element(aws_ses_domain_dkim.ses_domain_dkim.dkim_tokens, count.index)}._domainkey.${var.domain}"
     type    = "CNAME"
     ttl     = "600"
@@ -44,7 +44,7 @@ resource "aws_route53_record" "amazonses_dkim_record" {
 
 resource "aws_route53_record" "spf_mail_from" {
   
-    zone_id = data.aws_route53_zone.arms_zone.zone_id 
+    zone_id = data.aws_route53_zone.zone.zone_id 
     name    = aws_ses_domain_mail_from.main.mail_from_domain
     type    = "MX"
     ttl     = "600"
@@ -53,7 +53,7 @@ resource "aws_route53_record" "spf_mail_from" {
 
 resource "aws_route53_record" "spf_domain" {
   
-    zone_id = data.aws_route53_zone.arms_zone.zone_id   
+    zone_id = data.aws_route53_zone.zone.zone_id   
     name    = aws_ses_domain_mail_from.main.mail_from_domain
     type    = "TXT"
     ttl     = "600"
