@@ -2,7 +2,7 @@
 
 <!-- retro visitor counter -->
 <p align="center"> 
-![visitors]  <img src="https://profile-counter.glitch.me/ValAug/count.svg" />
+# visitors  <img src="https://profile-counter.glitch.me/ValAug/count.svg" />
 </p>
 
 This repository create an __AWS:__
